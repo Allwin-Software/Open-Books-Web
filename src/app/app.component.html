@@ -1,5 +1,13 @@
 <mat-sidenav-container class="h-full">
-  <mat-sidenav mode="over" [(opened)]="isSidenavOpen">Sidenav content</mat-sidenav>
+  <mat-sidenav mode="over" [(opened)]="isSidenavOpen">
+    <div>
+      <mat-nav-list>
+        @for(sideNavItem of sideNavItems(); track sideNavItem){
+        <a mat-list-item routerLink="/first-component" routerLinkActive="active">{{ sideNavItem.title }} </a>
+        }
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
       <button mat-icon-button (click)="toggleSidenav()">
