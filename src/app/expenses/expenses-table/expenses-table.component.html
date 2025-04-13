@@ -1,0 +1,16 @@
+<div>
+  <mat-list role="list">
+    @for (expense of expenses(); track expense) {
+    <mat-list-item role="listitem" lines="3">
+      <div class="text-sm">
+        {{ expense.date | date }}
+        <mat-chip>{{ expense.costCenterName }}</mat-chip>
+      </div>
+      <div class="flex justify-between items-center font-semibold">
+        <div>{{ expense.expenseFor }}</div>
+        <div>{{ expense.amount }}</div>
+      </div>
+    </mat-list-item>
+    }
+  </mat-list>
+</div>

@@ -4,7 +4,7 @@
     <div>
       <mat-form-field class="w-full">
         <mat-label>Expense for</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="expenseFor"></textarea>
       </mat-form-field>
     </div>
     <div>
@@ -16,7 +16,7 @@
     <div class="mb-4">
       <mat-form-field class="w-full">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" />
+        <input matInput [matDatepicker]="picker" formControlName="date" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -25,7 +25,7 @@
     <div>
       <mat-form-field class="w-full">
         <mat-label>Cost Center</mat-label>
-        <mat-select>
+        <mat-select formControlName="costCenterId">
           @for (costCenter of costCenters(); track costCenter) {
           <mat-option [value]="costCenter._id">{{ costCenter.name }}</mat-option>
           }
@@ -33,11 +33,13 @@
       </mat-form-field>
     </div>
     <div>
-      <button mat-flat-button>Save</button>
+      <button mat-flat-button (click)="saveExpense()">Save</button>
     </div>
   </div>
-  <div>
+  <div class="mt-4">
     <div class="text-xl font-semibold">Expenses</div>
-    <p>List of expenses will be displayed here.</p>
+    <div>
+      <app-expenses-table></app-expenses-table>
+    </div>
   </div>
 </div>
