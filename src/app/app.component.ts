@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,15 @@ import { SIDE_NAV_ITEMS } from './constants/side-nav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule],
+  imports: [
+    RouterOutlet,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    RouterModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

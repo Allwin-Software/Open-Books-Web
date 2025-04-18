@@ -1,5 +1,5 @@
 <div>
-  <div class="text-xl font-semibold mb-4">Add Expenses</div>
+  <app-sub-header>Add Expenses</app-sub-header>
   <div [formGroup]="expenseForm">
     <div>
       <mat-form-field class="w-full">
@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="mt-4">
-    <div class="text-xl font-semibold">Expenses</div>
+    <app-sub-header [bottomMargin]="false">Expenses</app-sub-header>
     <div>
       <app-expenses-table></app-expenses-table>
     </div>

@@ -4,11 +4,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { CostCenterService } from '../cost-center/cost-center.service';
 import { MatButtonModule } from '@angular/material/button';
+
+import { CostCenterService } from '../cost-center/cost-center.service';
 import { ExpensesService } from './expenses.service';
 import { Expense, ExpenseForm, ExpenseSchema } from '../types/expenses';
 import { ExpensesTableComponent } from './expenses-table/expenses-table.component';
+import { SubHeaderComponent } from '../components/sub-header/sub-header.component';
 
 @Component({
   imports: [
@@ -19,6 +21,7 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
     MatSelectModule,
     MatButtonModule,
     ExpensesTableComponent,
+    SubHeaderComponent,
   ],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.css',

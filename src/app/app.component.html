@@ -3,7 +3,9 @@
     <div>
       <mat-nav-list>
         @for(sideNavItem of sideNavItems(); track sideNavItem){
-        <a mat-list-item routerLink="/first-component" routerLinkActive="active">{{ sideNavItem.title }} </a>
+        <a mat-list-item [routerLink]="sideNavItem.link" routerLinkActive="active" (click)="toggleSidenav()">
+          {{ sideNavItem.title }}
+        </a>
         }
       </mat-nav-list>
     </div>
