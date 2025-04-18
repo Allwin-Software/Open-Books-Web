@@ -1,10 +1,11 @@
 import { computed, inject, Injectable, resource } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 
-import { Expense, InsertExpenseResponse } from '../types/expenses';
+import { Expense } from '../types/expenses';
 import { HttpService } from '../services/http.service';
 import { expensesEndpoint } from '../constants/api-endpoints';
 import { CostCenterService } from '../cost-center/cost-center.service';
+import { InsertResponse } from '../types/common';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,7 @@ export class ExpensesService {
 
   saveExpenses(expense: Expense) {
     return this.httpService
-      .post<InsertExpenseResponse>(expensesEndpoint, expense)
+      .post<InsertResponse>(expensesEndpoint, expense)
       .pipe(map((response) => response.success === true));
   }
 }

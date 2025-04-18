@@ -1,8 +1,9 @@
 import { computed, inject, Injectable, resource } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { costCentersEndpoint } from '../constants/api-endpoints';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map, take, tap } from 'rxjs';
 import { CostCenter } from '../types/cost-centers';
+import { InsertResponse } from '../types/common';
 
 @Injectable({
   providedIn: 'root',
@@ -18,4 +19,11 @@ export class CostCenterService {
   });
 
   costCenters = computed(() => this.costCenterResource.value() || []);
+
+  saveCostCenter(costCenter: CostCenter) {
+    return this.httpService.post<InsertResponse>(costCentersEndpoint, costCenter).pipe(
+      map((response) => response.success === true),
+      tap(() => this.costCenterResource.reload())
+    );
+  }
 }

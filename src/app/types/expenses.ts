@@ -13,12 +13,6 @@ type Expense = z.infer<typeof ExpenseSchema>;
 
 export { ExpenseSchema, type Expense };
 
-export interface InsertExpenseResponse {
-  success: boolean;
-  insertedId?: string;
-  error?: any;
-}
-
 export interface ExpenseForm {
   expenseFor: FormControl<string | null>;
   amount: FormControl<number | null>;

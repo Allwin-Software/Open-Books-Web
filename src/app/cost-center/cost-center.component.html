@@ -1,3 +1,32 @@
 <div>
   <app-sub-header>Add CostCenter</app-sub-header>
+  <div [formGroup]="costCenterForm">
+    <div>
+      <mat-form-field class="w-full">
+        <mat-label> Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-full">
+        <mat-label> Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-flat-button (click)="saveCostCenter()">Save</button>
+    </div>
+  </div>
+  <div>
+    <mat-list>
+      @for (costCenter of costCenters(); track costCenter) {
+
+      <mat-list-item>
+        <span matListItemTitle class="capitalize">{{ costCenter.name }}</span>
+        <span matListItemLine class="capitalize">{{ costCenter.description }}</span>
+      </mat-list-item>
+
+      }
+    </mat-list>
+  </div>
 </div>
