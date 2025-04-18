@@ -5,6 +5,7 @@ export const CostCenterSchema = z.object({
   _id: z.string().optional(),
   name: z.string(),
   description: z.string(),
+  totalCost: z.number().optional(),
 });
 
 export type CostCenter = z.infer<typeof CostCenterSchema>;

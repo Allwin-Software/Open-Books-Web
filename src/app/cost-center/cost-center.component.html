@@ -20,10 +20,24 @@
   <div>
     <mat-list>
       @for (costCenter of costCenters(); track costCenter) {
-
-      <mat-list-item>
-        <span matListItemTitle class="capitalize">{{ costCenter.name }}</span>
-        <span matListItemLine class="capitalize">{{ costCenter.description }}</span>
+      <mat-list-item lines="3">
+        <div class="flex justify-between">
+          <div class="capitalize">
+            {{ costCenter.name }} @if (costCenter.totalCost) {<span>({{ costCenter.totalCost }})</span>}
+          </div>
+          <div>
+            <button class="!p-0 !min-w-6" mat-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="reconcileCostCenter(costCenter._id)">Reconcile Cost</button>
+              <button mat-menu-item>Archive</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="capitalize">
+          {{ costCenter.description }}
+        </div>
       </mat-list-item>
 
       }

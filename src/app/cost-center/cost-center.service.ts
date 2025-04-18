@@ -1,6 +1,10 @@
 import { computed, inject, Injectable, resource } from '@angular/core';
 import { HttpService } from '../services/http.service';
-import { costCentersEndpoint } from '../constants/api-endpoints';
+import {
+  costCentersEndpoint,
+  reconcileCostCenterEndpoint,
+  reconcileCostCentersEndpoint,
+} from '../constants/api-endpoints';
 import { lastValueFrom, map, take, tap } from 'rxjs';
 import { CostCenter } from '../types/cost-centers';
 import { InsertResponse } from '../types/common';
@@ -22,6 +26,22 @@ export class CostCenterService {
 
   saveCostCenter(costCenter: CostCenter) {
     return this.httpService.post<InsertResponse>(costCentersEndpoint, costCenter).pipe(
+      map((response) => response.success === true),
+      tap(() => this.costCenterResource.reload())
+    );
+  }
+
+  reconcileCostCenters() {
+    const url = reconcileCostCentersEndpoint;
+    return this.httpService.get<InsertResponse>(`${url}`).pipe(
+      map((response) => response.success === true),
+      tap(() => this.costCenterResource.reload())
+    );
+  }
+
+  reconcileCostCenter(id: string) {
+    const url = reconcileCostCenterEndpoint(id);
+    return this.httpService.get<InsertResponse>(`${url}`).pipe(
       map((response) => response.success === true),
       tap(() => this.costCenterResource.reload())
     );
